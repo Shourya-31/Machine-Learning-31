@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Home{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- navigation -->
+        </nav>
+    </header>
+
+    <main role="main">
+        {% block content %}
+        <h1>Welcome</h1>
+        <h1>This is the index page built with Flask</h1>
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year if current_year is defined else '' }}</p>
+    </footer>
+</body>
+</html>
