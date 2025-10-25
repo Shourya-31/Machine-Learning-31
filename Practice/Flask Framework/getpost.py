@@ -1,14 +1,4 @@
-# from flask import Flask
-
-# ## WSGI (Web Server Gateway Interface) Apllication
-# app=Flask(__name__)
-
-# # Skeleton 
-
-# if __name__=="__main__":
-#     app.run()
-
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app=Flask(__name__)
 
@@ -20,9 +10,16 @@ def welcom():
 def index():
     return render_template('index.html')
 
-@app.route('/form')
+@app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/submit',methods=['GET','POST'])
+def form():
+    if request.method=='POST':
+        name=request.form['name']
+        return f'Hello {name} there!'
+    return render_template('form.html')
 
 if __name__=="__main__":
     app.run(debug=True) # Help to update the web page by restarting the server on saving
