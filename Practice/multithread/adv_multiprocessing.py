@@ -3,6 +3,7 @@
 from concurrent.futures import ProcessPoolExecutor
 import time
 
+
 def square_nums(i):
         time.sleep(2)
         print(f"Square:{i*i}")
