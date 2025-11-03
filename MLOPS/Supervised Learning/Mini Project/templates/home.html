@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FWI Prediction | ML App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 50px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      width: 400px;
+      text-align: center;
+      animation: fadeIn 1.2s ease;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      background-color: #00c6ff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0072ff;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 15px rgba(0, 114, 255, 0.4);
+    }
+
+    h2 {
+      margin-top: 25px;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #ffea00;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 FWI Prediction 🔥</h1>
+
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+      <input type="text" name="Temperature" placeholder="Temperature" required>
+      <input type="text" name="RH" placeholder="Relative Humidity (RH)" required>
+      <input type="text" name="Ws" placeholder="Wind Speed (Ws)" required>
+      <input type="text" name="Rain" placeholder="Rain (mm)" required>
+      <input type="text" name="FFMC" placeholder="FFMC" required>
+      <input type="text" name="DMC" placeholder="DMC" required>
+      <input type="text" name="ISI" placeholder="ISI" required>
+      <input type="text" name="Classes" placeholder="Classes" required>
+      <input type="text" name="Region" placeholder="Region" required>
+      <button type="submit">Predict</button>
+    </form>
+
+    <h2>The FWI prediction is: {{ result }}</h2>
+  </div>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', () => {
+      const btn = document.querySelector('button');
+      btn.textContent = 'Predicting...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+    });
+  </script>
+</body>
+</html>
