@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | ML Project</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 700px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    .btn {
+      margin-top: 25px;
+      padding: 12px 30px;
+      background-color: #00c6ff;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #0072ff;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="welcome-text">Welcome, User 👋</h1>
+    <p>You're now entering the world of <strong>Machine Learning</strong> — where data meets intelligence and predictions shape the future. 🚀<br><br>
+    Let's transform raw data into smart insights and innovation!</p>
+    <button class="btn" onclick="showMessage()">Get Started</button>
+  </div>
+
+  <script>
+    function showMessage() {
+      const lines = [
+        'Training models... please wait 🧠',
+        'Optimizing accuracy... ⚙️',
+        'Deploying insights... 📊',
+        'Welcome to the future of AI! 💡'
+      ];
+
+      const randomLine = lines[Math.floor(Math.random() * lines.length)];
+      alert(randomLine);
+    }
+
+    // Optional dynamic welcome message
+    const user = prompt('Enter your name:');
+    if (user && user.trim() !== '') {
+      document.getElementById('welcome-text').textContent = `Welcome, ${user.trim()} 👋`;
+    }
+  </script>
+</body>
+</html>

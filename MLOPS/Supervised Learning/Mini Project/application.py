@@ -7,9 +7,13 @@ from sklearn.preprocessing import StandardScaler
 application = Flask(__name__)
 app=application
 
+## Import ridge regressor and standard scaler pickle
+ridge_model=pickle.load(open('models/ridge.pkl','rb'))
+standar_scaler=pickle.load(open('models/scaler.pkl','rb'))
+
 @app.route("/")
 def index():
-    return "Hello, World!"
+    return render_template('index.html')
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0",debug=True)
